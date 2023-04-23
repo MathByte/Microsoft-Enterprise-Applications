@@ -1,0 +1,36 @@
+﻿@model IEnumerable<CVGS_Main.Models.CvgsFriend>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Friend List</h1>
+
+<p>
+    <a asp-action="Create">Add Friend</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Username
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FriendToAdd)
+            </td>
+            <td>
+                <!--<a asp-action="Details" asp-route-id="@item.FriendId">Details</a>-->
+                <a asp-action="Delete" asp-route-id="@item.FriendId">Delete</a>
+                <a asp-action="Index" asp-controller="WishListItems" asp-route-id="@item.FriendToAdd">View Wishlist</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
